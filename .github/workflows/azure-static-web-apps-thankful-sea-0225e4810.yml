@@ -31,6 +31,11 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+        env: # Add environment variables here
+          REACT_APP_HOST_URI: "https://publish-p105266-e986892.adobeaemcloud.com/"
+          REACT_APP_GRAPHQL_ENDPOINT: "/content/graphql/nishant/endpoint.json"
+          REACT_APP_USE_PROXY: false
+          REACT_APP_AUTH_METHOD: ""
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
