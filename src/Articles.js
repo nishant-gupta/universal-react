@@ -8,7 +8,7 @@ it.
 */
 import React from "react";
 import { Link } from "react-router-dom";
-import { useArticles } from "./api/usePersistedQueries";
+//import { useArticles } from "./api/usePersistedQueries";
 import Error from "./Error";
 import Loading from "./Loading";
 import { addAemHost } from "./api/aemHeadlessClient";
@@ -18,8 +18,13 @@ import { mapJsonRichText } from './utils/renderRichText';
 //import './Article.scss';
 
 function Article() {
-    const assetTransform = { format: 'JPG', preferWebp: true, size: { width: 240, height: 200 } };
-    const { articles, error, references } = useArticles(assetTransform);
+    //const assetTransform = { format: 'JPG', preferWebp: true, size: { width: 240, height: 200 } };
+//    const { articles, error, references } = useArticles(assetTransform);
+    const { articles, error, references } = {articles: [{
+        "articleTitle": "Introduction",
+        "slug": "introduction"
+    }], error: null, references: []};
+
 
     console.log(articles);
 
@@ -56,9 +61,9 @@ function ArticleListItem({ articleTitle, slug, teaserimage, summary, references 
             </Link>
             
             <div className="article-item-title">{articleTitle}</div>
-            <img className="article-detail-primaryimage"
+            {/* <img className="article-detail-primaryimage"
                 src={addAemHost(teaserimage._path)} alt={articleTitle} />
-            <div>{mapJsonRichText(summary.json, customRenderOptions(references))}</div>
+            <div>{mapJsonRichText(summary.json, customRenderOptions(references))}</div> */}
         </li>
     );
 }
