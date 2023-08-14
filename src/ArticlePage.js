@@ -34,7 +34,14 @@ function ArticlePage() {
         return <Loading />;
     }
 
-    return (<div className="article-detail">
+    console.log(article);
+    const editorProps = {
+		itemID: "urn:aemconnection:" + article._path + "/jcr:content/data/master",
+		itemType: "reference",
+		itemfilter: "cf"
+	};
+
+    return (<div {...editorProps} itemScope className="article-detail">
         {/* <Link className="article-detail-close-button"  to="/">
             <img className="Backbutton-icon" src={backIcon} alt="Return" />
         </Link> */}
@@ -50,8 +57,10 @@ function ArticleDetailRender({ articleTitle,
 
         console.log(primaryimage);
 
+        
+
     return (<>
-        <h1 className="article-detail-title">{articleTitle}</h1>
+        <h1 itemProp="articleTitle" itemType="text" className="article-detail-title">{articleTitle}</h1>
         {/* <div className="article-detail-info">
             
             <div className="article-detail-info-description">
@@ -62,7 +71,13 @@ function ArticleDetailRender({ articleTitle,
                 src={addAemHost( primaryimage._path)} alt={articleTitle} />
         <div className="article-detail-content">
             {articleSections.map((articleSection, index) => {
-                return <ArticleSectionRender key={index} {...articleSection} references={references} />
+                const editorProps = {
+                    itemID: "urn:aemconnection:" + articleSection._path + "/jcr:content/data/master",
+                    itemType: "reference",
+                    itemfilter: "cf"
+                };
+
+                return <ArticleSectionRender {...editorProps} itemScope key={index} {...articleSection} references={references} />
             })}
             
             {/* <div>{mapJsonRichText(summary.json, customRenderOptions(references))}</div> */}
@@ -77,9 +92,9 @@ function ArticleDetailRender({ articleTitle,
 
 function ArticleSectionRender({ title, body, references }) {
     return (<>
-        <h2>{title}</h2>
+        <h2 itemProp="title" itemType="text">{title}</h2>
         
-        <div>{mapJsonRichText(body.json, customRenderOptions(references))}</div>
+        <div itemProp="body" itemType="richtext">{mapJsonRichText(body.json, customRenderOptions(references))}</div>
         
         
         </>);
