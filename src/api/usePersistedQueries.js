@@ -96,12 +96,12 @@ export function useArticles(params = {}) {
 }
 
 /**
- * Calls the 'wknd-shared/adventure-by-slug' persisted query with `slug` parameter.
+ * Calls te 'wknd-shared/adventure-by-slug' persisted query with `slug` parameter.
  *
  * @param {String!} slugName the adventure slug
  * @returns a JSON object representing the Adventure
  */
-export function useArticleBySlug(slugName, params = {}) {
+export function useArticleBySlug(slugName) {
   const [article, setArticle] = useState(null);
   const [references, setReferences] = useState(null);
   const [errors, setErrors] = useState(null);
@@ -114,10 +114,10 @@ export function useArticleBySlug(slugName, params = {}) {
       let response;
 
       // The key is 'slug' as defined in the persisted query
-      const queryVariables = { 
-        ...params,
-        slug: slugName
-      };
+      // const queryVariables = { 
+      //   ...params,
+      //   slug: slugName
+      // };
 
       // Call the AEM GraphQL persisted query named "wknd-shared/adventure-by-slug" with parameters
       response = await fetchPersistedQuery(
