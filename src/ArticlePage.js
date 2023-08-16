@@ -67,7 +67,7 @@ function ArticleDetailRender({ articleTitle,
                 {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price)}
             </div>
         </div> */}
-        <img itemProp="primaryimage" itemType="image"className="article-detail-primaryimage"
+        <img itemProp="primaryimage" itemType="media"className="article-detail-primaryimage"
                 src={addAemHost( primaryimage._path)} alt={articleTitle} />
         <div className="article-detail-content">
             {articleSections.map((articleSection, index) => {
