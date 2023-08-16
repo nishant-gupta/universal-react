@@ -95,7 +95,7 @@ function ArticleSectionRender({ title, body, _path, references, editorProps }) {
         <div {...editorProps} itemScope data-editor-itemlabel= {_path} className="article-detail-section">
             <h2 itemProp="title" itemType="text">{title}</h2>
             
-            <div itemProp="body" itemType="richtext" className='article-detail-section-body'>{mapJsonRichText(body.json, customRenderOptions(references))}</div>
+            <div itemProp="body" itemType="richtext" data-editor-itemmodel="richtext" className='article-detail-section-body'>{mapJsonRichText(body.json, customRenderOptions(references))}</div>
         </div>
         </>);
 }
