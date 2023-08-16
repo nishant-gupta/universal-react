@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 //import { useArticles } from "./api/usePersistedQueries";
 import Error from "./Error";
 import Loading from "./Loading";
-import { addAemHost } from "./api/aemHeadlessClient";
+//import { addAemHost } from "./api/aemHeadlessClient";
 
 //import backIcon from '../images/icon-close.svg';
 //import { mapJsonRichText } from './utils/renderRichText';
