@@ -77,7 +77,7 @@ function ArticleDetailRender({ articleTitle,
                     itemfilter: "cf"
                 };
 
-                return <ArticleSectionRender {...editorProps} itemScope key={index} {...articleSection} references={references} />
+                return <ArticleSectionRender  key={index} {...articleSection} references={references} editorProps={editorProps}/>
             })}
             
             {/* <div>{mapJsonRichText(summary.json, customRenderOptions(references))}</div> */}
@@ -90,13 +90,13 @@ function ArticleDetailRender({ articleTitle,
     );
 }
 
-function ArticleSectionRender({ title, body, references }) {
+function ArticleSectionRender({ title, body, references, editorProps }) {
     return (<>
-        <h2 itemProp="title" itemType="text">{title}</h2>
-        
-        <div itemProp="body" itemType="richtext">{mapJsonRichText(body.json, customRenderOptions(references))}</div>
-        
-        
+        <div {...editorProps} itemScope className="article-detail-section">
+            <h2 itemProp="title" itemType="text">{title}</h2>
+            
+            <div itemProp="body" itemType="richtext">{mapJsonRichText(body.json, customRenderOptions(references))}</div>
+        </div>
         </>);
 }
 /**
