@@ -69,7 +69,7 @@ function ArticleDetailRender({ articleTitle,
         </div> */}
         <img itemProp="primaryimage" itemType="media" className="article-detail-primaryimage"
                 src={addAemHost( primaryimage._path)} alt={articleTitle} />
-        <div className="article-detail-content" itemProp='articleSections' itemType='container' data-editor-behavior='container'>
+        <div className="article-detail-content" itemProp='articleSections' itemScope itemType='container' data-editor-behavior='container'>
             {articleSections.map((articleSection, index) => {
                 const editorProps = {
                     itemID: "urn:aemconnection:" + articleSection._path + "/jcr:content/data/master",
@@ -90,9 +90,9 @@ function ArticleDetailRender({ articleTitle,
     );
 }
 
-function ArticleSectionRender({ title, body, references, editorProps }) {
+function ArticleSectionRender({ title, body, _path, references, editorProps }) {
     return (<>
-        <div {...editorProps} itemScope className="article-detail-section">
+        <div {...editorProps} itemScope data-editor-itemlabel= {_path} className="article-detail-section">
             <h2 itemProp="title" itemType="text">{title}</h2>
             
             <div itemProp="body" itemType="richtext" className='article-detail-section-body'>{mapJsonRichText(body.json, customRenderOptions(references))}</div>
