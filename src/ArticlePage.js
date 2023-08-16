@@ -12,7 +12,7 @@ import { addAemHost } from "./api/aemHeadlessClient";
 
 //import backIcon from '../images/icon-close.svg';
 import { mapJsonRichText } from './utils/renderRichText';
-//import './AdventureDetail.scss';
+import './ArticleDetail.scss';
 import Error from "./Error";
 import Loading from "./Loading";
 import { useArticleBySlug } from './api/usePersistedQueries';
@@ -67,7 +67,7 @@ function ArticleDetailRender({ articleTitle,
                 {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(price)}
             </div>
         </div> */}
-        <img className="article-detail-primaryimage"
+        <img itemProp="primaryimage" itemType="image"className="article-detail-primaryimage"
                 src={addAemHost( primaryimage._path)} alt={articleTitle} />
         <div className="article-detail-content">
             {articleSections.map((articleSection, index) => {
@@ -95,7 +95,7 @@ function ArticleSectionRender({ title, body, references, editorProps }) {
         <div {...editorProps} itemScope className="article-detail-section">
             <h2 itemProp="title" itemType="text">{title}</h2>
             
-            <div itemProp="body" itemType="richtext">{mapJsonRichText(body.json, customRenderOptions(references))}</div>
+            <div itemProp="body" itemType="richtext" className='article-detail-section-body'>{mapJsonRichText(body.json, customRenderOptions(references))}</div>
         </div>
         </>);
 }

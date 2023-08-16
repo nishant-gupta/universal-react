@@ -15,7 +15,7 @@ import { addAemHost } from "./api/aemHeadlessClient";
 
 //import backIcon from '../images/icon-close.svg';
 import { mapJsonRichText } from './utils/renderRichText';
-//import './Article.scss';
+import './Articles.scss';
 
 function Article() {
     const assetTransform = { format: 'JPG', preferWebp: true, size: { width: 240, height: 200 } };
