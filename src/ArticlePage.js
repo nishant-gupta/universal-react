@@ -69,7 +69,7 @@ function ArticleDetailRender({ articleTitle,
         </div> */}
         <img itemProp="primaryimage" itemType="media" className="article-detail-primaryimage"
                 src={addAemHost( primaryimage._path)} alt={articleTitle} />
-        <div className="article-detail-content">
+        <div className="article-detail-content" itemProp='articleSections' itemType='container' data-editor-behavior='container'>
             {articleSections.map((articleSection, index) => {
                 const editorProps = {
                     itemID: "urn:aemconnection:" + articleSection._path + "/jcr:content/data/master",
